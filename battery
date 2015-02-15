@@ -1,0 +1,23 @@
+#!/bin/sh
+
+bat_info=`acpi`
+bat_stat=`echo $bat_info | grep -o -P -e "\w+(?=,)"`
+bat_levl=`echo $bat_info | grep -o -P -e "\d+(?=%)"`
+
+if [ "Discharging" = "$bat_stat" ] ; then
+    output="%{F`color -pre "#FF" c3`}[v]"
+elif [ "Charging" = "$bat_stat" ] ; then
+    output="%{F`color -pre "#FF" c2`}[^]"
+else
+    output="%{F`color -pre "#FF" c5`}[|]"
+fi
+
+if [ $bat_levl -gt 75 ] ; then
+    bat_colr="%{F`color -pre "#FF" c2`}"
+elif [ $bat_levl -gt 30 ] ; then
+    bat_colr="%{F`color -pre "#FF" c3`}"
+else
+    bat_colr="%{F`color -pre "#FF" c1`}"
+fi
+
+echo "$output $bat_colr $bat_levl %{F-}"

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+INACTIVE=`color -pre 0x c0`
+ACTIVE=`color -pre 0x c2`
+
+
+focus ()
+{
+    chwb -s 5 -c $INACTIVE `pfw`
+    chwso -r $1
+    wtf $1
+    chwb -s 5 -c $ACTIVE `pfw`
+}
+
+
+start_d ()
+{
+    wew -a | while IFS=: read ev wid
+    do
+        case $ev in
+            16) wattr o $wid || focus $wid;;
+        esac
+    done
+}
+
+
+if test -z $1
+then
+    start_d
+    exit 0
+fi
+
+case $1 in
+    next) focus `lsw | grep -v $(pfw) | sed '1 p;d'`;;
+    prev) focus `lsw | grep -v $(pfw) | sed '$ p;d'`;;
+    0x*)  focus $1;;
+esac

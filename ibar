@@ -1,0 +1,23 @@
+#!/bin/sh
+
+info ()
+{
+    while (true)
+    do
+        echo `battery bar` `date +"%a %Y-%m-%d %I:%M"`
+        sleep 1s
+    done
+}
+
+ROOT=`lsw -r`
+RW=`wattr w $ROOT`
+RH=`wattr h $ROOT`
+
+X=`dc -e "$RW 240 -p"`
+Y=`dc -e "$RH 28 -p"`
+
+FG=`color -pre "#ff" fg`
+BG=`color -pre "#ff" bg`
+FONT=`color font`
+
+info | bar -d -g 230x24+$X+$Y -B "$BG" -F "$FG" -f "$FONT"

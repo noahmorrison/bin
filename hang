@@ -1,0 +1,12 @@
+#!/bin/bash
+
+leave ()
+{
+    echo 'stopped'
+    exit 0
+}
+
+
+trap leave SIGTERM
+
+sleep infinity & wait $!

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+level=`cat /sys/class/backlight/intel_backlight/brightness`
+
+level=`dc -e "$level 300 $1 p"`
+
+sudo /usr/bin/tee /sys/class/backlight/intel_backlight/brightness <<< $level

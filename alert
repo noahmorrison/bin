@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $1 in
+    -t) TIME=$2
+        shift 2;;
+esac
+
+FG=`color -a bg`
+BG=`color -a fg`
+FONT=`color font`
+
+{
+    echo "  $@  " | bar -d -g 200x25+10+10 -p -B $BG -F $FG -f $FONT&
+    BAR=$!
+    sleep ${TIME:-"5"}
+    kill $BAR
+} &

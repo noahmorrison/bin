@@ -1,0 +1,41 @@
+#!/bin/sh
+
+
+toggle () {
+    volstate=`amixer get Master |
+                   egrep 'Playback.*?\[o' |
+                   egrep -o '\[o.+\]'`
+
+    if test "$volstate" = "[on]"
+    then
+        amixer set Master mute
+    else
+        amixer set Master unmute
+        amixer set Speaker unmute
+        amixer set Headphone unmute
+    fi
+}
+
+up () {
+    amixer set Master playback 2dB+
+}
+
+down () {
+    amixer set Master playback 2dB-
+}
+
+case $1 in
+    "+") up;;
+    "-") down;;
+    "toggle") toggle;;
+esac
+
+
+perc=`amixer get Master | egrep -o "[0-9]+%"`
+mute=`amixer get Master | egrep -o "(\[off\])"`
+if test "$mute" = "[off]"
+then
+    alert -t 1 "vol: $perc [muted]"
+else
+    alert -t 1 "vol: $perc"
+fi
