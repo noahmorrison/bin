@@ -5,8 +5,9 @@ case $1 in
         shift 2;;
 esac
 
-FG=`color -a bg`
-BG=`color -a fg`
+FG=`color -pre "#ff" bg`
+BG=`color -pre "#ff" fg`
+echo $BG
 FONT=`color font`
 
 {
