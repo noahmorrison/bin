@@ -4,7 +4,7 @@ info ()
 {
     while (true)
     do
-        echo `battery bar` `date +"%a %Y-%m-%d %I:%M"`
+        echo `battery color` `date +"%a %Y-%m-%d %I:%M"`
         sleep 1s
     done
 }
