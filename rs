@@ -24,7 +24,7 @@ do
         -n) STR="${STR}0-9"
             shift;;
 
-        -l) $(test "$2" == "") && usage
+        -l) test "$2" = "" && usage
             LENGTH=$2
             shift 2;;
 
