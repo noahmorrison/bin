@@ -6,10 +6,13 @@ ACTIVE=`color -pre 0x c2`
 
 focus ()
 {
-    chwb -s 5 -c $INACTIVE `pfw`
-    chwso -r $1
-    wtf $1
-    chwb -s 5 -c $ACTIVE `pfw`
+    if test "$1" != "" && test "$1" != "$(pfw)"
+    then
+        chwb -s 5 -c $INACTIVE `pfw`
+        chwso -r $1
+        wtf $1
+        chwb -s 5 -c $ACTIVE `pfw`
+    fi
 }
 
 
