@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dmenu_run -b -nb `color bg`\
+             -nf `color fg`\
+             -sb `color c6`\
+             -sf `color c0`\
+             -fn `color font`
