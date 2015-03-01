@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 toggle () {
     volstate=`amixer get Master |
                    egrep 'Playback.*?\[o' |
