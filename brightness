@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-level=`cat /sys/class/backlight/intel_backlight/brightness`
+file="/sys/class/backlight/intel_backlight/brightness"
 
+level=`cat $file`
 level=`dc -e "$level 300 $1 p"`
 
-sudo /usr/bin/tee /sys/class/backlight/intel_backlight/brightness <<< $level
+sudo echo $level > $file
