@@ -18,11 +18,9 @@ focus ()
 
 start_d ()
 {
-    wew -a | while IFS=: read ev wid
+    carl | while read wid
     do
-        case $ev in
-            16) wattr o $wid || focus $wid;;
-        esac
+        wattr o $wid || focus $wid
     done
 }
 
