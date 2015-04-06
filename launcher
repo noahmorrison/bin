@@ -1,7 +1,7 @@
 #!/bin/sh
 
-dmenu_run -b -nb `color bg`\
-             -nf `color fg`\
-             -sb `color c6`\
-             -sf `color c0`\
-             -fn `color font`
+dmenu_run -b -nb "#`qxr background`"\
+             -nf "#`qxr foreground`"\
+             -sb "#`qxr color6`"\
+             -sf "#`qxr color0`"\
+             -fn `qxr font`

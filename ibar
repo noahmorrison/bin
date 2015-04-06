@@ -16,8 +16,8 @@ RH=`wattr h $ROOT`
 X=`dc -e "$RW 240 -p"`
 Y=`dc -e "$RH 28 -p"`
 
-FG=`color -pre "#ff" fg`
-BG=`color -pre "#ff" bg`
-FONT=`color font`
+FG="#ff`qxr foreground`"
+BG="#ff`qxr background`"
+FONT=`qxr font`
 
 info | bar -d -g 230x24+$X+$Y -B "$BG" -F "$FG" -f "$FONT"

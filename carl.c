@@ -21,7 +21,7 @@ main(void)
 
     /* register window creation event */
     uint32_t mask[] = { XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY };
-    xcb_change_window_attributes(conn, scr->root, XCB_CW_EVENT_MASK, mask);
+    //xcb_change_window_attributes(conn, scr->root, XCB_CW_EVENT_MASK, mask);
     xcb_flush(conn);
 
     for (;;) {

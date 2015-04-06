@@ -5,27 +5,27 @@ bat_levl=`acpi | grep -o -P -e "\d+(?=%)"`
 
 case $bat_stat in
     "Discharging")
-        chrg_colr="%{F`color -pre "#FF" c3`}"
+        chrg_colr="%{F#FF`qxr color3`}"
         output="[v]"
         break;;
     "Charging")
-        chrg_colr="%{F`color -pre "#FF" c2`}"
+        chrg_colr="%{F#FF`qxr color2`}"
         output="[^]"
         break;;
     *)
-        chrg_colr="%{F`color -pre "#FF" c5`}"
+        chrg_colr="%{F#FF`qxr color5`}"
         output="[|]"
         break;;
 esac
 
 if test $bat_levl -gt 75
 then
-    bat_colr="%{F`color -pre "#FF" c2`}"
+    bat_colr="%{F#FF`qxr color2`}"
 elif test $bat_levl -gt 30
 then
-    bat_colr="%{F`color -pre "#FF" c3`}"
+    bat_colr="%{F#FF`qxr color3`}"
 else
-    bat_colr="%{F`color -pre "#FF" c1`}"
+    bat_colr="%{F#FF`qxr color1`}"
 fi
 
 if test "$1" = "color"

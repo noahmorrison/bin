@@ -5,10 +5,9 @@ case $1 in
         shift 2;;
 esac
 
-FG=`color -pre "#ff" bg`
-BG=`color -pre "#ff" fg`
-echo $BG
-FONT=`color font`
+FG="#FF`qxr background`"
+BG="#FF`qxr foreground`"
+FONT=`qxr font`
 
 {
     echo "  $@  " | bar -d -g 200x25+10+10 -p -B $BG -F $FG -f $FONT&
