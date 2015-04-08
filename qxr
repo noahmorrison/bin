@@ -1,0 +1,8 @@
+#!/bin/sh
+
+val=`xrdb -query | grep -e "$1:" | cut -f 2`
+
+case $val in
+    \#*) echo `echo $val | cut -c 2-`;;
+    *) echo $val
+esac
