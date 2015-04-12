@@ -9,4 +9,4 @@ leave ()
 
 trap leave SIGTERM
 
-sleep infinity & wait $!
+cat

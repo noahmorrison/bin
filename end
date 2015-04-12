@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo $@
-pkill -f "hang $@"
+pkill -19 -f "hang $@"
