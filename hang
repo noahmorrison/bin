@@ -7,6 +7,6 @@ leave ()
 }
 
 
-trap leave SIGTERM
+trap leave SIGKILL
 
-cat
+sleep infinity
