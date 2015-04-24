@@ -1,7 +1,7 @@
 #!/bin/sh
 
-INACTIVE="0x`qxr color0`"
-ACTIVE="0x`qxr color2`"
+INACTIVE="0x`qxr color8`"
+ACTIVE="0x`qxr color4`"
 
 
 focus ()
