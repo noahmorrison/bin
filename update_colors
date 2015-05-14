@@ -2,12 +2,15 @@
 
 xrdb ~/.Xresources
 
+cmd=""
+for i in $(seq 0 15);
+do
+    cmd="${cmd}\033]4;${i};#$(qxr color${i})\007"
+done
+
 for term in $(ls /dev/pts/)
 do
-    for i in $(seq 0 15);
-    do
-        echo -en "\033]4;${i};#$(qxr color${i})\007" > /dev/pts/$term
-    done
+    echo -en $cmd > /dev/pts/$term
 done
 
 
