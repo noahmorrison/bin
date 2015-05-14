@@ -1,0 +1,15 @@
+#!/bin/sh
+
+xrdb ~/.Xresources
+
+for term in $(ls /dev/pts/)
+do
+    for i in $(seq 0 15);
+    do
+        echo -en "\033]4;${i};#$(qxr color${i})\007" > /dev/pts/$term
+    done
+done
+
+
+killall ibar
+ibar &
