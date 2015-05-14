@@ -2,7 +2,17 @@
 
 xrdb ~/.Xresources
 
-cmd=""
+# foreground
+cmd="\033]10;#$(qxr foreground)\007"
+# background
+cmd="${cmd}\033]11;#$(qxr background)\007"
+# cursor
+cmd="${cmd}\033]12;#$(qxr color15)\007"
+# highlight background
+cmd="${cmd}\033]17;#$(qxr color15)\007"
+# highlight foreground
+cmd="${cmd}\033]19;#$(qxr color0)\007"
+
 for i in $(seq 0 15);
 do
     cmd="${cmd}\033]4;${i};#$(qxr color${i})\007"
@@ -16,3 +26,5 @@ done
 
 killall ibar
 ibar &
+
+xsetroot -solid "#$(qxr background)"
