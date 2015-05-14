@@ -1,0 +1,42 @@
+#!/bin/sh
+
+usage ()
+{
+    echo "usage: swap_colors [-h] [-l] [SCHEME]"
+    echo "	switches the current color scheme to SCHEME"
+    echo "	if no SCHEME is defined then choose a random one"
+    echo ""
+    echo "	-h: show this help message"
+    echo "	-l: list color schemes"
+
+    exit $1
+}
+
+
+case "$1" in
+    "-l")
+        ls ~/etc/colors/ -1
+        exit 0;;
+
+    "-h")
+        usage 0;;
+
+    *)
+        if test ! -f ~/etc/colors/$1
+        then
+            usage 1
+        fi;;
+esac
+
+
+if test -n "$1"
+then
+    color=$1
+else
+    color=$(ls ~/etc/colors/ | shuf -n 1)
+fi
+
+
+sed -i.bak "s/#include \"\/home\/$(whoami)\/etc\/colors\/.*/\
+              #include \"\/home\/$(whoami)\/etc\/colors\/${color}\"/"\
+            ~/.Xresources
