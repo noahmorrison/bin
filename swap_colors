@@ -21,6 +21,9 @@ case "$1" in
     "-h")
         usage 0;;
 
+    "")
+        ;;
+
     *)
         if test ! -f ~/etc/colors/$1
         then
