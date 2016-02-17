@@ -5,22 +5,18 @@ toggle () {
                    egrep 'Playback.*?\[o' |
                    egrep -o '\[o.+\]'`
 
-    if test "$volstate" = "[on]"
-    then
-        amixer set Master mute
-    else
-        amixer set Master unmute
-        amixer set Speaker unmute
-        amixer set Headphone unmute
-    fi
+    case "$volstate" in
+        *"[on]"*) amixer set Master mute;;
+        *"[off]"*) amixer set Master unmute;;
+    esac
 }
 
 up () {
-    amixer set Master playback 2dB+
+    amixer set Master 1%+ > /dev/null
 }
 
 down () {
-    amixer set Master playback 2dB-
+    amixer set Master 1%- > /dev/null
 }
 
 case $1 in
@@ -30,11 +26,9 @@ case $1 in
 esac
 
 
-perc=`amixer get Master | egrep -o "[0-9]+%"`
-mute=`amixer get Master | egrep -o "(\[off\])"`
-if test "$mute" = "[off]"
-then
-    alert -t 1 "vol: $perc [muted]"
-else
-    alert -t 1 "vol: $perc"
-fi
+perc=`amixer get Master | egrep -o "[0-9]+%" | head -1`
+mute=`amixer get Master | egrep -o "(\[o.+\])" | head -1`
+case "$mute" in
+    *"[on]"*) alert -t 1 "vol: $perc";;
+    *"[off]"*) alert -t 1 "vol: $perc [muted]";;
+esac
