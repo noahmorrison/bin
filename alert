@@ -10,7 +10,7 @@ BG="#FF`qxr foreground`"
 FONT=`qxr font`
 
 {
-    echo "  $@  " | bar -d -g 200x25+10+10 -p -B $BG -F $FG -f $FONT&
+    echo "  $@  " | lemonbar -d -g 200x25+10+10 -p -B $BG -F $FG -f $FONT&
     BAR=$!
     sleep ${TIME:-"5"}
     kill $BAR

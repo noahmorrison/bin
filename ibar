@@ -20,4 +20,4 @@ FG="#ff`qxr foreground`"
 BG="#ff`qxr background`"
 FONT=`qxr font`
 
-info | bar -d -g 230x24+$X+$Y -B "$BG" -F "$FG" -f "$FONT"
+info | lemonbar -db -g x$HEIGHT -B "$BG" -F "$FG" -f "$FONT"
