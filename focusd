@@ -2,16 +2,18 @@
 
 INACTIVE="0x`qxr color8`"
 ACTIVE="0x`qxr color4`"
+BORDER=`qxr wm.borderwidth`
+test -n "$BORDER" || BORDER="2"
 
 
 focus ()
 {
     if test "$1" != "" && test "$1" != "`pfw`"
     then
-        chwb -s 5 -c $INACTIVE `pfw`
+        chwb -s $BORDER -c $INACTIVE `pfw`
         chwso -r $1
         wtf $1
-        chwb -s 5 -c $ACTIVE `pfw`
+        chwb -s $BORDER -c $ACTIVE `pfw`
     fi
 }
 
