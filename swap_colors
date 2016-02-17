@@ -40,6 +40,4 @@ else
 fi
 
 
-sed -i.bak "s/#include \"\/home\/$(whoami)\/etc\/colors\/.*/\
-              #include \"\/home\/$(whoami)\/etc\/colors\/${color}\"/"\
-            ~/.Xresources
+sed -i.bak "s/#include \"\/home\/$(whoami)\/etc\/colors\/.*/#include \"\/home\/$(whoami)\/etc\/colors\/${color}\"/" ~/.Xresources
