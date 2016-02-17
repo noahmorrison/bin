@@ -27,4 +27,9 @@ done
 killall ibar
 ibar &
 
-xsetroot -solid "#$(qxr background)"
+if test -n `qxr wallpaper`
+then
+    feh --bg-scale "`qxr wallpaper`"
+else
+    xsetroot -solid "#$(qxr background)"
+fi
