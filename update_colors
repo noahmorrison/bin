@@ -20,7 +20,7 @@ done
 
 for term in $(ls /dev/pts/)
 do
-    echo -en $cmd > /dev/pts/$term
+    echo -n $cmd > /dev/pts/$term
 done
 
 
