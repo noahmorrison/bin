@@ -9,15 +9,9 @@ info ()
     done
 }
 
-ROOT=`lsw -r`
-RW=`wattr w $ROOT`
-RH=`wattr h $ROOT`
-
-X=`dc -e "$RW 240 -p"`
-Y=`dc -e "$RH 28 -p"`
-
 FG="#ff`qxr foreground`"
 BG="#ff`qxr background`"
-FONT=`qxr font`
+FONT=`qxr font | cut -d, -f1`
+HEIGHT=`qxr systembar.height`
 
 info | lemonbar -db -g x$HEIGHT -B "$BG" -F "$FG" -f "$FONT"
