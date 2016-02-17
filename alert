@@ -7,7 +7,7 @@ esac
 
 FG="#FF`qxr background`"
 BG="#FF`qxr foreground`"
-FONT=`qxr font`
+FONT=`qxr font | cut -d, -f 1`
 
 {
     echo "  $@  " | lemonbar -d -g 200x25+10+10 -p -B $BG -F $FG -f $FONT&
