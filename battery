@@ -30,7 +30,7 @@ fi
 
 if test "$1" = "color"
 then
-    echo "$chrg_colr $output $bat_colr $bat_levl %{F-}"
+    echo "${chrg_colr}$output ${bat_colr}${bat_levl}%{F-}"
 else
     echo "$output $bat_levl"
 fi
